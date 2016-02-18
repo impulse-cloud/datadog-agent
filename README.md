@@ -2,20 +2,19 @@
 
 [![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
 
-Datadog agent inside a container optimized for Tutum
+Datadog agent inside a container optimized for Tutum, with added support for storing configuration in a git repository.
+
+See the [DataDog image](https://github.com/DataDog/docker-dd-agent) and [Tutum image](https://github.com/tutumcloud/datadog-agent) for configuration instructions.
 
 ## Usage
 
-	docker-compose run -d -e API_KEY=<your-api-key> -e HOSTNAME=<your-hostname> datadog
+We use a single repository with subfolders for each stack (e.g. staging / production). 
+Each subfolder then contains conf.d/ and checks.d/ folders which are set up for the specific services running in each stack.
 
-replacing `<your-api-key>` with the 32 character API key found in your account Integrations APIs and `<your-hostname>` with the name you want it to appear in the DataDog infrastructure list.
+To update the configuration, we push to the git repository and redeploy the Datadog Agent container.
 
-## Unsupported metrics
+## Additional Environment Variables
 
-* Network
-* Process list
-
-## Notes
-
-* Once the containers start running, it can take several minutes to start being monitored by DataDog.
-* Once the DataDog container is stopped, it can take up to 24h for the host to disappear from the infrastructure page, but it will only be part of the host count for billing purposes if we’re actually receiving data.
+* `SSH_KEY` -  If using a private repo, base64 encode a certificate that has at least read access.
+* `GIT_SSH_REPO` - path to the git repository similar to what you would use with `git clone`, e.g. `git@bitbucket.org:impulsecloud/some_repo.git`
+* `GIT_TREEISH` - defaults to HEAD, but allows for specifying things like `branch_name:subfolder\`

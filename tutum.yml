@@ -1,5 +1,5 @@
 datadog:
-  image: "tutum/datadog-agent"
+  image: "impulsecloud/datadog-agent"
   restart: "on-failure"
   privileged: true
   volumes:
