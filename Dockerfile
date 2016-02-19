@@ -9,6 +9,10 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Disable monitoring of docker itself. We'll use a separate container per-host for that.
+# This container is meant to monitor all services in a stack, so we only want one per stack.
+RUN rm /etc/dd-agent/conf.d/docker_daemon.yaml
+
 COPY entrypoint.sh /entrypoint.sh
 COPY fetch_configuration.sh /fetch_configuration.sh
 
