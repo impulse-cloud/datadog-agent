@@ -45,7 +45,7 @@ find /conf.d -name '*.yaml' -exec cp {} /etc/dd-agent/conf.d \;
 find /checks.d -name '*.py' -exec cp {} /etc/dd-agent/checks.d \;
 
 # Fetch conf from git repository
-sh ./fetch_configuration.sh
+./fetch_configuration.sh
 
 export PATH="/opt/datadog-agent/embedded/bin:/opt/datadog-agent/bin:$PATH"
 
