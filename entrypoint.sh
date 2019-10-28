@@ -36,6 +36,10 @@ if [[ $PROXY_PASSWORD ]]; then
     sed -i -e "s/^# proxy_password:.*$/proxy_password: ${PROXY_USER}/" /etc/dd-agent/datadog.conf
 fi
 
+if [[ $DD_HOSTNAME ]]; then
+    sed -i -e "s/^#hostname:.*$/hostname: ${DD_HOSTNAME}/" /etc/dd-agent/datadog.conf
+fi
+
 if [[ $STATSD_METRIC_NAMESPACE ]]; then
     sed -i -e "s/^# statsd_metric_namespace:.*$/statsd_metric_namespace: ${STATSD_METRIC_NAMESPACE}/" /etc/dd-agent/datadog.conf
 fi
