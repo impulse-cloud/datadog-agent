@@ -1,10 +1,8 @@
-# tutum/datadog-agent
+# impulse-cloud/datadog-agent
 
-[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
+Fork of the official DataDog which can load configuration files at startup from a git repository.
 
-Datadog agent inside a container optimized for Tutum, with added support for storing configuration in a git repository.
-
-See the [DataDog image](https://github.com/DataDog/docker-dd-agent) and [Tutum image](https://github.com/tutumcloud/datadog-agent) for configuration instructions.
+See the [DataDog documentation](https://docs.datadoghq.com/agent/docker/?tab=standard#integrations), [DataDog image](https://hub.docker.com/r/datadog/agent), and [DataDog github repository](https://github.com/DataDog/datadog-agent/tree/master/Dockerfiles/agent/amd64) for more information about using the agent container.
 
 ## Usage
 

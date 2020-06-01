@@ -34,6 +34,6 @@ then
   git archive --format=tar --remote=${GIT_SSH_REPO} ${GIT_TREEISH} | tar xf -
 
   # `|| :` is just a trick to suppress the error status code if either conf.d/ or checks.d/ doesn't exist
-  cp -R conf.d/* /etc/dd-agent/conf.d/ || :
-  cp -R checks.d/* /etc/dd-agent/checks.d/ || :
+  cp -R conf.d/* /etc/datadog-agent/conf.d/ || :
+  cp -R checks.d/* /etc/datadog-agent/checks.d/ || :
 fi
